@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('includes/head') %>
+
+
+    <body>
+        <%- include('includes/header') %>
+
+            <main>
+                <form action="/create-post" method="POST">
+                    <!-- the code below allows us to write JS code inside html -->
+                    <% errors.forEach(error=> { %>
+                        <p class="notice">
+                            <%= error %>
+                        </p>
+                        <% }) %>
+
+
+                            <fieldset>
+                                <legend>Create a New Post</legend>
+                                <label for="title">Title</label>
+                                <input type="text" id="title" name="title" autocomplete="off">
+
+                                <label for="body">Content</label>
+                                <textarea name="body" id="body"></textarea>
+
+                                <br />
+                                <!-- Even without a function this acts as a submit button because of the form -->
+                                <!-- as specified in the action, it automatically sends a POST request to /create-post -->
+                                <button>Save New Post</button>
+                            </fieldset>
+                </form>
+
+            </main>
+            <%- include('includes/footer') %>
+
+    </body>
+
+</html>
